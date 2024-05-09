@@ -17,7 +17,7 @@ function newQuote() {
     authorText.textContent = quote.author;
   }
   // Check Quote length to determine styling
-  if (quote.text.length > 120) {
+  if (quote.text.length > 80) {
     quoteText.classList.add("long-quote");
   } else {
     quoteText.classList.remove("long-quote");
@@ -37,16 +37,6 @@ async function getQuotes() {
     // Catch Error Here
   }
 }
-
-// Tweet Quote
-function tweetQuote() {
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
-  window.open(twitterUrl, "_blank");
-}
-
-// Event Listeners
-newQuoteBtn.addEventListener("click", newQuote);
-twitterBtn.addEventListener("click", tweetQuote);
 
 // On Load
 getQuotes();

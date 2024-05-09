@@ -16,19 +16,13 @@ function newQuote() {
   } else {
     authorText.textContent = quote.author;
   }
-  // Check Quote length to determine styling
-  if (quote.text.length > 120) {
-    quoteText.classList.add("long-quote");
-  } else {
-    quoteText.classList.remove("long-quote");
-  }
 
   quoteText.textContent = quote.text;
 }
 
 // Get Quotes from API
 async function getQuotes() {
-  const apiUrl = "https://type.fit/api/quotes";
+  const apiUrl = "https://zenquotes.io/api";
   try {
     const response = await fetch(apiUrl);
     apiQuotes = await response.json();
@@ -37,16 +31,6 @@ async function getQuotes() {
     // Catch Error Here
   }
 }
-
-// Tweet Quote
-function tweetQuote() {
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
-  window.open(twitterUrl, "_blank");
-}
-
-// Event Listeners
-newQuoteBtn.addEventListener("click", newQuote);
-twitterBtn.addEventListener("click", tweetQuote);
 
 // On Load
 getQuotes();
